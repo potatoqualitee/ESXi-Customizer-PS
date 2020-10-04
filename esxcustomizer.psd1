@@ -33,7 +33,7 @@
     PowerShellVersion  = '5.1'
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules    = @('PSFramework', 'PoshRSJob')
+    RequiredModules    = @()
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @()
@@ -71,10 +71,10 @@
             IconUri      = "https://1.bp.blogspot.com/-B1KOrwysPfI/Uo5eh1d-_nI/AAAAAAAABOI/kk_9FO2CfeE/s1600/ESXi-Customizer-PS-trans.png"
 
             # The web address of this module's project or support homepage.
-            ProjectUri   = "https://github.com/potatoqualitee/acas"
+            ProjectUri   = "https://github.com/VFrontDe/ESXi-Customizer-PS"
 
             # The web address of this module's license. Points to a page that's embeddable and linkable.
-            LicenseUri   = "https://opensource.org/licenses/MIT"
+            LicenseUri   = "https://opensource.org/licenses/gpl-license"
 
             # Release notes for this particular version of the module
             ReleaseNotes = ""

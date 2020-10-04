@@ -11,7 +11,7 @@ function Import-ModuleFile {
 }
 
 # Detect whether at some level dotsourcing was enforced
-if ($acas_dotsourcemodule) { $script:doDotSource }
+if ($esxcustomizer_dotsourcemodule) { $script:doDotSource }
 
 # Import all internal functions
 foreach ($function in (Get-ChildItem "$ModuleRoot\private\" -Filter "*.ps1" -Recurse -ErrorAction Ignore)) {
@@ -23,42 +23,13 @@ foreach ($function in (Get-ChildItem "$ModuleRoot\public" -Filter "*.ps1" -Recur
     . Import-ModuleFile -Path $function.FullName
 }
 
-
-if (!(Test-Path variable:Script:NessusConn )) {
-    $script:NessusConn = New-Object System.Collections.ArrayList
-}
-
 # Variables
-$script:permidenum = @{
-    16  = 'Read-Only'
-    32  = 'Regular'
-    64  = 'Administrator'
-    128 = 'Sysadmin'
+$script:acceptancelevels = @{
+    VMwareCertified    = 1
+    VMwareAccepted     = 2
+    PartnerSupported   = 3
+    CommunitySupported = 4
 }
 
-$script:permenum = @{
-    'Read-Only'     = 16
-    'Regular'       = 32
-    'Administrator' = 64
-    'Sysadmin'      = 128
-}
-
-$script:severity = @{
-    0 = 'Info'
-    1 = 'Low'
-    2 = 'Medium'
-    3 = 'High'
-    4 = 'Critical'
-}
-
-# to help switch between Nessus and tenable.sc
-$script:replace = @{
-    users   = 'user'
-    folders = 'folder'
-    groups  = 'group'
-    scans   = 'scan'
-}
-
-$script:origin = New-Object -Type DateTime -ArgumentList 1970, 1, 1, 0, 0, 0, 0
-
+# set default values for parameters
 $PSDefaultParameterValues['*:UseBasicParsing'] = $true
